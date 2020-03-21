@@ -1,11 +1,15 @@
 from rest_framework import generics
 from rest_framework.views import APIView
 from rest_framework import status
-from rest_framework import Response
+from rest_framework.response import Response
 from rest_framework import viewsets
 
 from .models import Poll, Choice
-from .serializers import PollSerializer, ChoiceSerializer, VoteSerializer
+from .serializers import PollSerializer, ChoiceSerializer, VoteSerializer, UserSerializer
+
+
+class UserCreate(generics.CreateAPIView):
+    serializer_class = UserSerializer
 
 
 class PollViewSet(viewsets.ModelViewSet):
