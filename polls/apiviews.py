@@ -4,15 +4,17 @@ from rest_framework import status
 from rest_framework.response import Response
 from rest_framework import viewsets
 
+
 from .models import Poll, Choice
 from .serializers import PollSerializer, ChoiceSerializer, VoteSerializer, UserSerializer
 from django.contrib.auth import authenticate
 from rest_framework.exceptions import PermissionDenied
+from rest_framework.permissions import IsAuthenticated
 
 
 
 class LonginView(APIView):
-    permission_classes = ()
+    permission_classes = (IsAuthenticated)
     
     
     def post(self, request,):
@@ -28,7 +30,7 @@ class LonginView(APIView):
 
 class UserCreate(generics.CreateAPIView):
     authentication_classes = ()
-    permission_classes = ()
+    permission_classes = (IsAuthenticated)
     serializer_class = UserSerializer
 
 
